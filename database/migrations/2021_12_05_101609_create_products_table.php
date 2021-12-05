@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->longText('image_link');
             $table->date('expiration_date');
             $table->text('contact_info');
-            $table->integer('quantity');
-            $table->integer('initial_price');
+            $table->float('quantity');
+            $table->float('initial_price');
             $table->date('first_evaluation_date');
             $table->float('first_discount_ratio');
             $table->date('second_evaluation_date');
