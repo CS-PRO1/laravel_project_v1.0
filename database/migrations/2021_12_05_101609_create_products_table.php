@@ -18,10 +18,10 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             $table->foreignId('owner_id')->constrained('users')->cascadeOnDelete();
-            $table->longText('image_link');
+            $table->text('image_link');
             $table->date('expiration_date');
             $table->text('contact_info');
-            $table->float('quantity');
+            $table->float('quantity')->default('1');
             $table->float('initial_price');
             $table->date('first_evaluation_date');
             $table->float('first_discount_ratio');
