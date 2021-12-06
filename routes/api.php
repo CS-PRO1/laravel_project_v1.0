@@ -1,8 +1,9 @@
 <?php
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,24 @@ Route::group([
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);    
+});
+
+Route::group([
+    'prefix' => 'products'
+], function ($router) {
+    Route::get('/', [ProductController::class, 'index']);
+    Route::post('/', [ProductController::class, 'store']);
+    Route::post('/', [ProductController::class, 'show']);
+    Route::post('/{id}', [ProductController::class, 'update']);
+    Route::get('/{id}', [ProductController::class, 'destroy']);    
+});
+
+Route::group([
+    'prefix' => 'categories'
+], function ($router) {
+    Route::get('/', [ProductController::class, 'index']);
+    Route::post('/', [ProductController::class, 'store']);
+    Route::post('/', [ProductController::class, 'show']);
+    Route::post('/{id}', [ProductController::class, 'update']);
+    Route::get('/{id}', [ProductController::class, 'destroy']);    
 });
