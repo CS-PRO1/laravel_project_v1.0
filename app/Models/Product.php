@@ -11,6 +11,7 @@ class Product extends Model
 
     protected $fillable = [
         'name',
+        'category_id',
         'image_link',
         'expiration_date',
         'contact_info',
@@ -18,9 +19,9 @@ class Product extends Model
         'initial_price',
         'first_evaluation_date',
         'second_evaluation_date',
-        'first_discount_ratio',
-        'second_discount_ratio',
-        'third_discount_ratio',
+        'first_discount_percentage',
+        'second_discount_percentage',
+        'third_discount_percentage',
     ];
 
     /**

@@ -24,10 +24,10 @@ class CreateProductsTable extends Migration
             $table->float('quantity')->default('1');
             $table->float('initial_price');
             $table->date('first_evaluation_date');
-            $table->float('first_discount_ratio');
+            $table->float('first_discount_percentage');
             $table->date('second_evaluation_date');
-            $table->float('second_discount_ratio');
-            $table->float('third_discount_ratio');
+            $table->float('second_discount_percentage');
+            $table->float('third_discount_percentage');
             $table->timestamps();
         });
     }
