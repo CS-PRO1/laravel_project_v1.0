@@ -17,7 +17,7 @@ class AuthController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {//utruiruiriur
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 

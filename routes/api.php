@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//User Routes
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
@@ -28,6 +29,7 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);    
 });
 
+//Product Routes
 Route::group([
     'prefix' => 'products'
 ], function ($router) {
@@ -38,6 +40,7 @@ Route::group([
     Route::delete('/{id}', [ProductController::class, 'destroy']);
 });
 
+//Category Routes (Not final)
 Route::group([
     'prefix' => 'categories'
 ], function ($router) {

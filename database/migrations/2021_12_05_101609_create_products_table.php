@@ -20,16 +20,19 @@ class CreateProductsTable extends Migration
             $table->foreignId('category_id')->default(1)->constrained('categories')->cascadeOnDelete();
             //$table->integer('owner_id');
             //$table->integer('category_id');
-            $table->text('image_link');
-            $table->date('expiration_date');
-            $table->text('contact_info');
+            $table->text('image');
+            $table->longText('contact_info');
             $table->integer('quantity')->default('1');
             $table->float('initial_price');
             $table->date('first_evaluation_date');
-            $table->float('first_discount_percentage');
             $table->date('second_evaluation_date');
+            $table->date('expiration_date');
+            $table->float('first_discount_percentage');
             $table->float('second_discount_percentage');
             $table->float('third_discount_percentage');
+            $table->integer('range-1');
+            $table->integer('range-2');
+            $table->integer('range-3');
             $table->timestamps();
         });
     }

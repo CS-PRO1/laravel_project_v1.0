@@ -14,7 +14,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //importing necessary inputs
-        $validator = Validator::make($request->all(), [
+        $product=$request->all();
+        $validator = Validator::make($product, [
             'name' => 'required|string|between:2,100',
             'owner_id' => 'required|numeric|min:1',
             'image_link' => 'required|url',
@@ -32,24 +33,15 @@ class ProductController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-        DB::table('products')->insert($validator->validated());
-        return response()->json(['message'=>'Product was added successfuly']);
+        $product=Product::create($product);
+        return response()->json(['message'=>'Product was added successfuly', 'Product' => $product]);
         }
-    public function destroy($productId)
-    {
-        //standard json import/decode
-        $filePath = 'C:\xampp\htdocs\Products_list.json';
-        $fileContent = file_get_contents($filePath);
-        $jsonContent = json_decode($fileContent, true);
 
-        //Checking that the requested ID is valid
-        if ($productId <= 0 || $productId > count($jsonContent))
-            return response()->json(['message' => 'Invalid ID'], 400);
-        //Destroying the product values
-        unset($jsonContent[$productId - 1]);
-        //recreating the json file after deleting the product
-        file_put_contents($filePath, json_encode(array_values($jsonContent)));
-        return response()->json(['message' => 'Product has been deleted successfully']);
+    public function destroy($id)
+    {
+            $product= Product::find($id);
+            $product->delete();
+            return $this->returnSuccessMessage("Product was deleted successfully");
     }
 
     public function index()
@@ -85,8 +77,14 @@ class ProductController extends Controller
         'message' => 'Data updated successfully!',
         'data' => $jsonContent[$productId - 1]]); //Printing out the new product data
         }
-    public function show($productId)
-    {
 
-    }
+
+        public function show($id)
+        {
+            $product= Product::find($id);
+            if (is_null($product)) {
+                return $this->returnError(404, 'notfound');
+            }
+            return $this->returnData('show',$product,'success');
+        }
 }
