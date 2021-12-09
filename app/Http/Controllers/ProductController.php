@@ -46,37 +46,13 @@ class ProductController extends Controller
 
     public function index()
     {
-        //standard json import/decode
-        $filePath = 'C:\xampp\htdocs\Products_list.json';
-        $fileContent = file_get_contents($filePath);
-        $jsonContent = json_decode($fileContent, true);
-        return response()->json([
-            'message' => 'Data retrieved successfully!',
-            'data' => $jsonContent //Printing out all the product values
-        ]);
+        //
     }
     
     public function update($productId, Request $request)
     {
-        $filePath = 'C:\xampp\htdocs\Products_list.json';
-        $fileContent = file_get_contents($filePath);
-        $jsonContent = json_decode($fileContent, true);
-        //Checking that the requested ID is valid
-        if ($productId <= 0 || $productId > count($jsonContent))
-            return response()->json(['message' => 'Invalid ID'], 400);
-        //importing necessary inputs
-        $name = $request->input('name');
-        //Checking validty of inputs
-        if (!$name)
-            return response()->json(['message' => 'invalid payload, name field is required', 'data' => null], 400);
-        //Updating the product name
-        $jsonContent[$productId - 1]['name']=$name;
-        //Reintroducing the updated product into the json file
-        file_put_contents($filePath, json_encode(array_values($jsonContent)));
-        return response()->json([ 
-        'message' => 'Data updated successfully!',
-        'data' => $jsonContent[$productId - 1]]); //Printing out the new product data
-        }
+        //
+    }
 
 
         public function show($id)
