@@ -30,9 +30,9 @@ class CreateProductsTable extends Migration
             $table->float('first_discount_percentage');
             $table->float('second_discount_percentage');
             $table->float('third_discount_percentage');
-            $table->integer('range-1');
-            $table->integer('range-2');
-            $table->integer('range-3');
+            $table->integer('range-1')->default('1');
+            $table->integer('range-2')->default('1');
+            $table->integer('range-3')->default('1');
             $table->timestamps();
         });
     }

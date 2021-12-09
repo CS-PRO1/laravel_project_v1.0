@@ -18,9 +18,9 @@ class ProductController extends Controller
         $validator = Validator::make($product, [
             'name' => 'required|string|between:2,100',
             'owner_id' => 'required|numeric|min:1',
-            'image_link' => 'required|url',
             'category_id' => 'required|numeric|min:1',
-            'contact_info' => 'required|string',
+            'image' => 'required',
+            'contact_info' => 'required',
             'quantity' => 'required|numeric',
             'initial_price' => 'required|numeric',
             'first_evaluation_date' => 'required|date',
